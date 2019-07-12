@@ -5,62 +5,72 @@
     </head>
 
     <body>
-        <!--This will be the title/instructions-->
-        <div id="Title"> 
+    <div class="container-fluid">    
+        
+        <!--This will contain the title/instructions -->
+        <div id = "Title"> 
                 <h1>The Psychic Game</h1>
                 <p>Guess what letter I'm thinking of...</p>
         </div>
-        <!--This div will act as the scoreboard-->
+        <!--This div will contain the scoreboard-->
         <div id = "Scoreboard">
-                <p id="Wins">Wins: </p>
-                <p id="Losses">Losses: </p>
-                <p id="Guesses">Guesses left: </p>
+                <p>Wins: </p>
+                <p>Losses: </p>
+                <p>Guesses left: </p>
                 <p>Your guesses so far: </p>
         </div>
         
 
         <script type = "text/javascript">
             // Array that holds the alphabet, computer will use this to pick a letter.
-            var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h','i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+            var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
             
             // Variables for score keeping.
             var wins = 0;
             var losses = 0;
-            var guessesLeft = 11;
-            var guessedLetters = document.g;
+            var guessesLeft = 10;
+            var guessedLetters = [];
             
             var compGuess = alphabet[Math.floor(Math.random()*alphabet.length)];
             console.log(compGuess);
             
-            // resetGame();
-            // display ();
+            var resetGame = 
+
 
             // Function that runs after on.key ()
             document.onkeyup = function(event) {
                 var userGuess = event.key;
-                guessedLetters.push(userGuess);
+                // guessedLetters.push(userGuess);
 
                 // Both guesses match = win
                 if(userGuess === compGuess) {
                     wins++;
                     guessesLeft = 10;
+                    guessedLetters = [];
+                    alert("You Win! Refresh the page to play again!");
                     }
                 // If not = loss
-                else {guessesLeft--;}
+                else {
+                    guessesLeft--;
+                    guessedLetters.push(userGuess);
+                    }
                 // If guesses left hits 0 = loss
                 if(guessesLeft === 0) {
                     losses++;
+                    guessesLeft = 10;
+                    guessedLetters = [];
+                    alert("You Lose! Try again!");
+
                 }
             
-            // display();
+            var html = 
+            "<p>Wins: " + wins + "</p>" +
+            "<p>Losses: " + losses + "</p>" +
+            "<p>Guesses left: " + guessesLeft + "</p>" +
+            "<p>Your guesses so far: " + guessedLetters + "</p>";
 
-            // function.display() {
-            //     var
-            // }
-            document.getElementById("Wins").innerHTML = "Wins " + wins;
-            document.getElementById("Losses").innerHTML = "Losses " + losses;
-            document.getElementById("Guesses").innerHTML = "Guesses left:  " + guessesLeft;
-            
+            document.querySelector("#Scoreboard").innerHTML = html;
+
             }
         
         
@@ -70,6 +80,6 @@
 
 
 
-
+    </div>
     </body>
 </html>
