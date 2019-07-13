@@ -3,6 +3,7 @@ html {
     color: rgb(224, 224, 224);
     background-image: url("../images/bgimg.png");
     background-size: cover;
+    text-decoration: dimgray;
 }
 
 
