@@ -1,85 +1,54 @@
 <html lang=en>
     <head>
         <meta charset="UTF-8">
+        
         <title>The Psychic Game</title>
+        
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+
     </head>
 
     <body>
-    <div class="container-fluid">    
-        
-        <!--This will contain the title/instructions -->
-        <div id = "Title"> 
-                <h1>The Psychic Game</h1>
-                <p>Guess what letter I'm thinking of...</p>
+    
+    <div class="jumbotron">
+        <div class="row" id="Title">
+            <h1>The Psychic Game</h1>
+            <p>Can you guess what letter I'm thuinking of?</p>
         </div>
-        <!--This div will contain the scoreboard-->
-        <div id = "Scoreboard">
-                <p>Wins: </p>
-                <p>Losses: </p>
-                <p>Guesses left: </p>
-                <p>Your guesses so far: </p>
+    </div>
+    
+    
+    <div class="container-fluid">
+        <div class="row">
+            
+            <!--This will contain the scoreboard-->
+            <div class="col-xs-4">
+                <div id="Scoreboard">
+                        <p>Wins: </p>
+                        <br>
+                        <p>Losses: </p>
+                        <br>
+                        <p>Guesses left: </p>
+                        <br>
+                        <p>Your guesses so far: </p>
+                </div>
+            </div>
+
+            <!--This will contain an image for the page-->
+            <div class="col-xs-8" id="imgbox">
+                <img src="assets/images/testimg.jpeg" class="img-responsive" alt="Picture goes here"> 
+            </div>
+
+            <!--Scrpt will go here; link it to js file-->
+            <script src="assets/javascript/game.js">
+                  
+            </script>
+        
         </div>
         
-
-        <script type = "text/javascript">
-            // Array that holds the alphabet, computer will use this to pick a letter.
-            var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-            
-            // Variables for score keeping.
-            var wins = 0;
-            var losses = 0;
-            var guessesLeft = 10;
-            var guessedLetters = [];
-            
-            var compGuess = alphabet[Math.floor(Math.random()*alphabet.length)];
-            console.log(compGuess);
-            
-            var resetGame = 
-
-
-            // Function that runs after on.key ()
-            document.onkeyup = function(event) {
-                var userGuess = event.key;
-                // guessedLetters.push(userGuess);
-
-                // Both guesses match = win
-                if(userGuess === compGuess) {
-                    wins++;
-                    guessesLeft = 10;
-                    guessedLetters = [];
-                    alert("You Win! Refresh the page to play again!");
-                    }
-                // If not = loss
-                else {
-                    guessesLeft--;
-                    guessedLetters.push(userGuess);
-                    }
-                // If guesses left hits 0 = loss
-                if(guessesLeft === 0) {
-                    losses++;
-                    guessesLeft = 10;
-                    guessedLetters = [];
-                    alert("You Lose! Try again!");
-
-                }
-            
-            var html = 
-            "<p>Wins: " + wins + "</p>" +
-            "<p>Losses: " + losses + "</p>" +
-            "<p>Guesses left: " + guessesLeft + "</p>" +
-            "<p>Your guesses so far: " + guessedLetters + "</p>";
-
-            document.querySelector("#Scoreboard").innerHTML = html;
-
-            }
-        
-        
-        
-        </script>
-
-
-
-
     </div>
     </body>
+
 </html>
